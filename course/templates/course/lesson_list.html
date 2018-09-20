@@ -1,0 +1,32 @@
+{% extends 'layouts/master_blade.html' %}
+
+{% block content %}
+
+{#课程内容#}
+    <div  class="container">
+        <div class="text-center">
+            <h2>课程标题</h2>
+            <p>课程内容</p>
+
+        </div>
+
+        <table class="table-hover  table">
+            <tr>
+                <td>序号</td>
+                <td>标题</td>
+                <td>概要</td>
+            </tr>
+
+            {#  遍历courses中的每一节lesson #}
+            {% for lesson in course.lession_course.all %}
+                <td>{{ forloop.counter }}</td>
+                <td>{{ lesson.title }}</td>
+                <td>{{ lesson.description }}</td>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+{% endblock %}

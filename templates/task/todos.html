@@ -1,0 +1,48 @@
+{% extends 'task/../layouts/master_blade.html' %} {% block content %}
+
+<h1>Todo List <a href="/todo/create" class="btn btn-primary pull-right btn-sm">Add New Todo</a></h1>
+    <hr/>
+
+{% if todos %} {# 判断todos是否有内容，若有内容显示内容 #}
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>已完成</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>
+                    {% if todo.completed %} 已完成 {% else %} 进行中 {% endif %}
+                </td>
+                <td>
+                    {% if todo.completed %}
+                    <form method="post" action="/todo/update/{{ todo.id }}/" accept-charset="UTF-8" class="form-inline">
+                        <input name="_method" type="hidden" value="PUT">
+                        <input class="btn btn-success btn-xs" type="submit" value="已完成">
+                    </form>
+                    {% else %}
+                    <form method="post" action="/todo/update/{{ todo.id }}/" accept-charset="UTF-8" class="form-inline">
+                        <input name="_method" type="hidden" value="PUT">
+                        <input class="btn btn-success btn-xs" type="submit" value="未完成">
+                    </form>
+                    {% endif %}
+                    <form method="post" action="/todo/delete/{{ todo.id }}/" accept-charset="UTF-8" class="form-inline">
+                        <input name="_method" type="hidden" value="DELETE">
+                        <input name="id" type="hidden" value="2">
+                        <input class="btn btn-danger btn-xs" type="submit" value="删除">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="text-center">
+</div>
+{% endif %} {% endblock content %}

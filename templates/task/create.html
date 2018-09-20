@@ -1,0 +1,28 @@
+{% extends 'task/../layouts/master_blade.html' %} {% block content %}
+
+<div class="container">
+    <h1>Create New Todo</h1>
+    <hr/>
+
+    <form method="POST" action="/todo/create/" accept-charset="UTF-8" class="form-horizontal" role="form">
+        <!-- <input name="_token" type="hidden" value="USs1eovm6BPu15NWpDrjZ3edGcq1ESUyWgDCxBh2"> -->
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Todo Name</label>
+            <div class="col-sm-6">
+                <input class="form-control" name="title" type="text" id="name">
+                <span class="help-block text-danger">
+
+                </span>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-5">
+                <input class="btn btn-primary" type="submit" value="Create Button">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

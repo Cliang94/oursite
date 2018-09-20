@@ -1,0 +1,22 @@
+{% extends 'layouts/master_blade.html' %}
+
+{% block content %}
+
+    <table class="table table-hover">
+        <tr>
+            <td>序号</td>
+            <td>课程标题</td>
+            <td>讲师</td>
+        </tr>
+        {% for cours in courses %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'course_detail' cours.id %}">{{ cours.title }}</a></td>
+                <td>{{ cours.user.username }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+{% endblock %}
